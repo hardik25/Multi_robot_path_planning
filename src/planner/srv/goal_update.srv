@@ -1,0 +1,4 @@
+float64[] goal
+int32 avail
+---
+string run

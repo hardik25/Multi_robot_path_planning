@@ -1,0 +1,2 @@
+planner
+-DCATKIN_DEVEL_PREFIX=/home/siddharth/multi_robo_plan/devel -DCMAKE_INSTALL_PREFIX=/home/siddharth/multi_robo_plan/install -G Unix Makefiles

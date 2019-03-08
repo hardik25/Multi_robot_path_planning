@@ -1,0 +1,8 @@
+prefix=/home/siddharth/multi_robo_plan/install
+
+Name: planner
+Description: Description of planner
+Version: 0.0.0
+Cflags: -I/home/siddharth/multi_robo_plan/install/include
+Libs: -L/home/siddharth/multi_robo_plan/install/lib -lplanner
+Requires: roscpp rospy std_msgs message_runtime
