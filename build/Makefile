@@ -569,6 +569,19 @@ std_msgs_generate_messages_nodejs/fast:
 .PHONY : std_msgs_generate_messages_nodejs/fast
 
 #=============================================================================
+# Target rules for targets named planner_node
+
+# Build rule for target.
+planner_node: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 planner_node
+.PHONY : planner_node
+
+# fast build rule for target.
+planner_node/fast:
+	$(MAKE) -f planner/CMakeFiles/planner_node.dir/build.make planner/CMakeFiles/planner_node.dir/build
+.PHONY : planner_node/fast
+
+#=============================================================================
 # Target rules for targets named roscpp_generate_messages_lisp
 
 # Build rule for target.
@@ -729,6 +742,7 @@ help:
 	@echo "... roscpp_generate_messages_nodejs"
 	@echo "... _planner_generate_messages_check_deps_goal_update"
 	@echo "... std_msgs_generate_messages_nodejs"
+	@echo "... planner_node"
 	@echo "... roscpp_generate_messages_lisp"
 	@echo "... std_msgs_generate_messages_eus"
 	@echo "... std_msgs_generate_messages_lisp"

@@ -138,6 +138,8 @@ target_link_libraries(driver_node ${catkin_LIBRARIES})
 
 add_executable(agent_node src/agent.cpp)
 target_link_libraries(agent_node ${catkin_LIBRARIES})
+add_executable(planner_node src/planner.cpp)
+target_link_libraries(planner_node ${catkin_LIBRARIES})
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
