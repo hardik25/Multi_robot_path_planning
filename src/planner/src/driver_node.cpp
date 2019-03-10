@@ -18,37 +18,37 @@ int main(int argc, char **argv)
 
 {
 
+	
+
 	ros::init(argc,argv,"Driver_Client");
 
-	if (argc == 1)
-	{
-		cout<<"the goal position has been entered correctly";
-	}
-	else 
-	{
-		cout<< " Why have you entered more than one goal? Please enter just one goal";
-	}
+
+
+	// if (argc == 3)
+	// {
+	// 	cout<<"the goal position has been entered correctly";
+	// }
+	// else 
+	// {
+	// 	cout<< " Why have you entered more than one goal? Please enter just one goal";
+	// }
 
 	ros::NodeHandle n; 
 	ros::ServiceClient D_client = n.serviceClient<planner::goal_update>("update_goal");
 	planner::goal_update service;
 
-	int x = atoi(argv[1]);
-	int y = atoi(argv[2]);
-	int yaw = atoi(argv[3]);
+	ROS_INFO("will update the goal now");
 
-	int goal[3] = {x,y,yaw};
+	vector<double>goal{5,5,0};
 
-	service.request.goal[1] = x;
-	service.request.goal[2] = y;
-	service.request.goal[3] = yaw;
-	service.request.avail = 1;
+
+
+
+	service.request.goal= goal;
 
 	if (D_client.call(service))
 	{	
-
 		string is_it = service.response.run;
-		// ROS_INFO("are we able to get the goal update service ? : %s", is_it);
 
 	}
 	else
@@ -56,6 +56,26 @@ int main(int argc, char **argv)
 		ROS_INFO("we are not able to update the goal through the service");
 		return 1;
 	}
+
+	vector<double>goal1{9,7,0};
+
+
+	service.request.goal =  goal1;
+	service.request.avail = 1;
+
+	if (D_client.call(service))
+	{	
+		string is_it = service.response.run;
+
+	}
+	else
+	{
+		ROS_INFO("we are not able to update the goal through the service");
+		return 1;
+	}
+
+
+
 
 	return 0;
 

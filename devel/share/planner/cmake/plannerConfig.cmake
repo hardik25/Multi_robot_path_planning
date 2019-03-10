@@ -91,9 +91,9 @@ endif()
 # flag project as catkin-based to distinguish if a find_package()-ed project is a catkin project
 set(planner_FOUND_CATKIN_PROJECT TRUE)
 
-if(NOT "/home/siddharth/multi_robo_plan/devel/include;/home/siddharth/multi_robo_plan/src/planner/include " STREQUAL " ")
+if(NOT "/home/siddharth/multi_robo_plan/devel/include " STREQUAL " ")
   set(planner_INCLUDE_DIRS "")
-  set(_include_dirs "/home/siddharth/multi_robo_plan/devel/include;/home/siddharth/multi_robo_plan/src/planner/include")
+  set(_include_dirs "/home/siddharth/multi_robo_plan/devel/include")
   if(NOT " " STREQUAL " ")
     set(_report "Check the issue tracker '' and consider creating a ticket if the problem has not been reported yet.")
   elseif(NOT " " STREQUAL " ")

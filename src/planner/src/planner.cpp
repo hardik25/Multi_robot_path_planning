@@ -15,12 +15,15 @@ using namespace std;
 vector<double> start;
 vector<double> goal;
 string agent_id;
-bool ser_flag = false;
-bool subs_flag = false;
 
+bool ser_flag 	= 	false;
+bool subs_flag 	= 	false;
+	
 vector<double> x_path_send;
 vector<double> y_path_send;
 
+
+//function for finding the path from the given set of goal and start position. 
 
 void MRobo::find_path(vector<double> start, vector<double> goal)
 {
@@ -36,16 +39,17 @@ void MRobo::find_path(vector<double> start, vector<double> goal)
 	int i_goal = goal[0];
 	int j_goal = goal[1];
 
-	cost_list[i_cur][j_cur] = 0;
-	grid[i_cur][j_cur].parent_x = i_cur;
-	grid[i_cur][j_cur].parent_y = j_cur;
-	grid[i_cur][j_cur].visit = true;
+	cost_list[i_cur][j_cur] 	= 	0;
+	grid[i_cur][j_cur].parent_x = 	i_cur;
+	grid[i_cur][j_cur].parent_y = 	j_cur;
+	grid[i_cur][j_cur].visit 	= 	true;
 
 	
 
 	int min_cost = 1000;
 
 	int update = 0;
+
 
 	for(int i = 0;i<10;i++)
 		{
@@ -79,6 +83,7 @@ void MRobo::find_path(vector<double> start, vector<double> goal)
 				if (cost_list[i][j] < min_cost)
 				{
 					min_cost = cost_list[i][j];
+
 					i_cur = i;
 					j_cur = j;
 				}
@@ -106,14 +111,15 @@ void MRobo::find_path(vector<double> start, vector<double> goal)
 
 		int i_n1 = i_cur+1;
 		int j_n1 = j_cur;
+
 		if(i_n1<10&&j_n1<10&&grid[i_n1][j_n1].visit!=true)
 		{
-			int cost = min_cost + 10;
+			int cost = min_cost + 10;// + 10*(i_goal-i_n1) + 10*(j_goal-j_n1);
 			if (cost<cost_list[i_n1][j_n1])
 			{
-				cost_list[i_n1][j_n1] = cost;
-				grid[i_n1][j_n1].parent_x = i_cur;
-				grid[i_n1][j_n1].parent_y = j_cur;
+				cost_list[i_n1][j_n1] 		= 	cost;
+				grid[i_n1][j_n1].parent_x 	= 	i_cur;
+				grid[i_n1][j_n1].parent_y 	= 	j_cur;
 			}
 		}
 
@@ -122,14 +128,15 @@ void MRobo::find_path(vector<double> start, vector<double> goal)
 
 		i_n1 = i_cur;
 		j_n1 = j_cur+1;
+
 		if(i_n1<10&&j_n1>0&&grid[i_n1][j_n1].visit!=true)
 		{
-			int cost = min_cost + 10;
+			int cost = min_cost + 10;// + 10*(i_goal-i_n1) + 10*(j_goal-j_n1);
 			if (cost<cost_list[i_n1][j_n1])
 			{
-				cost_list[i_n1][j_n1] = cost;
-				grid[i_n1][j_n1].parent_x = i_cur;
-				grid[i_n1][j_n1].parent_y = j_cur;
+				cost_list[i_n1][j_n1] 		= 	cost;
+				grid[i_n1][j_n1].parent_x 	= 	i_cur;
+				grid[i_n1][j_n1].parent_y 	= 	j_cur;
 			}
 		}
 
@@ -137,28 +144,30 @@ void MRobo::find_path(vector<double> start, vector<double> goal)
 
 		i_n1 = i_cur-1;
 		j_n1 = j_cur;
+
 		if(i_n1>=0&&j_n1<10&&grid[i_n1][j_n1].visit!=true)
 		{
-			int cost = min_cost + 10;
+			int cost = min_cost + 10;// + 10*(i_goal-i_n1) + 10*(j_goal-j_n1);
 			if (cost<cost_list[i_n1][j_n1])
 			{
-				cost_list[i_n1][j_n1] = cost;
-				grid[i_n1][j_n1].parent_x = i_cur;
-				grid[i_n1][j_n1].parent_y = j_cur;
+				cost_list[i_n1][j_n1] 		= 	cost;
+				grid[i_n1][j_n1].parent_x 	= 	i_cur;
+				grid[i_n1][j_n1].parent_y 	= 	j_cur;
 			}
 		}
 
 
 		i_n1 = i_cur;
 		j_n1 = j_cur-1;
+
 		if(i_n1>=0&&j_n1>=0&&grid[i_n1][j_n1].visit!=true)
 		{
-			int cost = min_cost + 10;
+			int cost = min_cost + 10;// + 10*(i_goal-i_n1) + 10*(j_goal-j_n1);
 			if (cost<cost_list[i_n1][j_n1])
 			{
-				cost_list[i_n1][j_n1] = cost;
-				grid[i_n1][j_n1].parent_x = i_cur;
-				grid[i_n1][j_n1].parent_y = j_cur;
+				cost_list[i_n1][j_n1] 		= 	cost;
+				grid[i_n1][j_n1].parent_x 	= 	i_cur;
+				grid[i_n1][j_n1].parent_y 	= 	j_cur;
 			}
 		}
 
@@ -189,10 +198,12 @@ void MRobo::find_path(vector<double> start, vector<double> goal)
 
 		i_cur = grid[i_cur1][j_cur1].parent_x;
 		j_cur = grid[i_cur1][j_cur1].parent_y;
+
 		x_path.push_back(i_cur);
 		x_path_send.push_back(i_cur);
 		y_path.push_back(j_cur);
 		y_path_send.push_back(j_cur);
+
 		i_cur1=i_cur;
 		j_cur1=j_cur;
 
@@ -254,9 +265,9 @@ void assign_start(const planner::agent_status msg)
 bool plan_assign(planner::plan::Request &req, planner::plan::Response &res)
 {
 
-	ROS_INFO("in the service function");
-	goal = req.goal;
-	agent_id = req.id;
+	
+	goal 		= 	req.goal;
+	agent_id 	= 	req.id;
 
 
 	MRobo mrobo;

@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<launch>
+
+<!--	This launch file launches the agent node of the package. The planner node has to be launched separately.-->
+  	
+
+	<node pkg="planner" name="agent" type="agent_node" output="screen" />
+
+</launch>

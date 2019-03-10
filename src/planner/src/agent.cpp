@@ -50,10 +50,11 @@ bool goal_assign(planner::goal_update::Request &req, planner::goal_update::Respo
 	}
 
 
-	goal = req.goal;
-	avail = req.avail;
+	goal 	= 	req.goal;
+	avail 	= 	req.avail;
+	res.run = 	"yes";
+
 	ROS_INFO("the goal has been assigned");
-	res.run = "yes";
 
 	
 
@@ -62,18 +63,21 @@ bool goal_assign(planner::goal_update::Request &req, planner::goal_update::Respo
 	ros::ServiceClient plan_client = n1.serviceClient<planner::plan>("get_plan");
 	planner::plan plan_service;
 
-	plan_service.request.goal = goal;
+	plan_service.request.goal 	= goal;
 	
-	plan_service.request.start = start;
+	plan_service.request.start 	= start;
 
-	plan_service.request.id = agent_id;
+	plan_service.request.id 	= agent_id;
+
 
 	if (plan_client.call(plan_service))
 	{	
 		ROS_INFO("getting the plan now");
+
 		plan_x = plan_service.response.plan_x;
 		plan_y = plan_service.response.plan_y;
 		length = plan_y.size();
+
 		flag = true;
 
 	}
@@ -133,29 +137,29 @@ int main(int argc, char * argv[])
 			// ROS_INFO("%f",plan_y[i+5]);
 					
 
-			viz_msg.markers[i].header.frame_id = "base_link";
-		    viz_msg.markers[i].header.stamp = ros::Time();
-		    viz_msg.markers[i].ns = "my_namespace";
-		    viz_msg.markers[i].id = i;
-		    viz_msg.markers[i].type = visualization_msgs::Marker::SPHERE;
-		    viz_msg.markers[i].action = visualization_msgs::Marker::ADD;
-		    viz_msg.markers[i].pose.position.x = plan_x[i];
-		    viz_msg.markers[i].pose.position.y = plan_y[i];
-		    viz_msg.markers[i].pose.position.z = 0.0;
-		    viz_msg.markers[i].pose.orientation.x = 0.0;
-		    viz_msg.markers[i].pose.orientation.y = 0.0;
-		    viz_msg.markers[i].pose.orientation.z = 0.0;
-		    viz_msg.markers[i].pose.orientation.w = 1.0;
-		    viz_msg.markers[i].scale.x = 0.2;
-		    viz_msg.markers[i].scale.y = 0.2;
-		    viz_msg.markers[i].scale.z = 0.2;
-		    viz_msg.markers[i].color.a = 1.0;
-		    viz_msg.markers[i].color.r = 0.8;
-		    viz_msg.markers[i].color.b = 0.2;
-		    viz_msg.markers[i].color.g = 0.2;
+			viz_msg.markers[i].header.frame_id 		= 	"base_link";
+		    viz_msg.markers[i].header.stamp 		= 	ros::Time();
+		    viz_msg.markers[i].ns 					= 	"my_namespace";
+		    viz_msg.markers[i].id 					= 	i;
+		    viz_msg.markers[i].type 				= 	visualization_msgs::Marker::SPHERE;
+		    viz_msg.markers[i].action 				= 	visualization_msgs::Marker::ADD;
+		    viz_msg.markers[i].pose.position.x 		= 	plan_x[i];
+		    viz_msg.markers[i].pose.position.y 		= 	plan_y[i];
+		    viz_msg.markers[i].pose.position.z 		= 	0.0;
+		    viz_msg.markers[i].pose.orientation.x 	= 	0.0;
+		    viz_msg.markers[i].pose.orientation.y 	= 	0.0;
+		    viz_msg.markers[i].pose.orientation.z 	= 	0.0;
+		    viz_msg.markers[i].pose.orientation.w 	= 	1.0;
+		    viz_msg.markers[i].scale.x 				= 	0.2;
+		    viz_msg.markers[i].scale.y 				= 	0.2;
+		    viz_msg.markers[i].scale.z 				= 	0.2;
+		    viz_msg.markers[i].color.a 				= 	1.0;
+		    viz_msg.markers[i].color.r 				= 	0.8;
+		    viz_msg.markers[i].color.b 				= 	0.2;
+		    viz_msg.markers[i].color.g 				= 	0.2;
 			
-			
-
+				
+		    
 			}
 
 			flag = false;
