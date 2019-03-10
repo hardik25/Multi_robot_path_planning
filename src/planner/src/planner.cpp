@@ -9,6 +9,7 @@
 #include "planner/agent_status.h"
 #include "ros/ros.h"
 
+
 using namespace std;
 
 vector<double> start;
@@ -16,6 +17,9 @@ vector<double> goal;
 string agent_id;
 bool ser_flag = false;
 bool subs_flag = false;
+
+vector<double> x_path_send;
+vector<double> y_path_send;
 
 
 void MRobo::find_path(vector<double> start, vector<double> goal)
@@ -187,21 +191,27 @@ void MRobo::find_path(vector<double> start, vector<double> goal)
 		i_cur = grid[i_cur1][j_cur1].parent_x;
 		j_cur = grid[i_cur1][j_cur1].parent_y;
 		x_path.push_back(i_cur);
+		x_path_send.push_back(i_cur);
 		y_path.push_back(j_cur);
+		y_path_send.push_back(j_cur);
 		i_cur1=i_cur;
 		j_cur1=j_cur;
 
 
 	}
 
-	int length = x_path.size();
 
-	for (int p = 0;p<length;p++)
-	{
-		ROS_INFO("the x coordinate is : %d",x_path[p]);
-		ROS_INFO("the y coordinate is : %d",y_path[p]);
-	}
-		
+
+	// int length = x_path.size();
+
+	// for (int p = 0;p<length;p++)
+	// {
+	// 	ROS_INFO("the x coordinate is : %d",x_path[p]);
+	// 	ROS_INFO("the y coordinate is : %d",y_path[p]);
+	// }
+
+
+
 
 
 }
@@ -249,6 +259,7 @@ bool plan_assign(planner::plan::Request &req, planner::plan::Response &res)
 	goal = req.goal;
 	agent_id = req.id;
 
+
 	MRobo mrobo;
 
 	if(!goal.empty())
@@ -264,6 +275,9 @@ bool plan_assign(planner::plan::Request &req, planner::plan::Response &res)
 	
 
 	mrobo.start_plan(start,goal);
+
+	res.plan_x = x_path_send;
+	res.plan_y = y_path_send;
 
 
 	return true;

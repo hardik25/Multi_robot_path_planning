@@ -11,6 +11,10 @@ planner/CMakeFiles/agent_node.dir/src/agent.cpp.o: /home/siddharth/multi_robo_pl
 planner/CMakeFiles/agent_node.dir/src/agent.cpp.o: /home/siddharth/multi_robo_plan/src/planner/src/agent.cpp
 planner/CMakeFiles/agent_node.dir/src/agent.cpp.o: /home/siddharth/multi_robo_plan/src/planner/src/node.h
 planner/CMakeFiles/agent_node.dir/src/agent.cpp.o: /home/siddharth/multi_robo_plan/src/planner/src/planner.h
+planner/CMakeFiles/agent_node.dir/src/agent.cpp.o: /opt/ros/kinetic/include/geometry_msgs/Point.h
+planner/CMakeFiles/agent_node.dir/src/agent.cpp.o: /opt/ros/kinetic/include/geometry_msgs/Pose.h
+planner/CMakeFiles/agent_node.dir/src/agent.cpp.o: /opt/ros/kinetic/include/geometry_msgs/Quaternion.h
+planner/CMakeFiles/agent_node.dir/src/agent.cpp.o: /opt/ros/kinetic/include/geometry_msgs/Vector3.h
 planner/CMakeFiles/agent_node.dir/src/agent.cpp.o: /opt/ros/kinetic/include/ros/advertise_options.h
 planner/CMakeFiles/agent_node.dir/src/agent.cpp.o: /opt/ros/kinetic/include/ros/advertise_service_options.h
 planner/CMakeFiles/agent_node.dir/src/agent.cpp.o: /opt/ros/kinetic/include/ros/assert.h
@@ -67,7 +71,10 @@ planner/CMakeFiles/agent_node.dir/src/agent.cpp.o: /opt/ros/kinetic/include/ros/
 planner/CMakeFiles/agent_node.dir/src/agent.cpp.o: /opt/ros/kinetic/include/ros/wall_timer.h
 planner/CMakeFiles/agent_node.dir/src/agent.cpp.o: /opt/ros/kinetic/include/ros/wall_timer_options.h
 planner/CMakeFiles/agent_node.dir/src/agent.cpp.o: /opt/ros/kinetic/include/rosconsole/macros_generated.h
+planner/CMakeFiles/agent_node.dir/src/agent.cpp.o: /opt/ros/kinetic/include/std_msgs/ColorRGBA.h
 planner/CMakeFiles/agent_node.dir/src/agent.cpp.o: /opt/ros/kinetic/include/std_msgs/Header.h
+planner/CMakeFiles/agent_node.dir/src/agent.cpp.o: /opt/ros/kinetic/include/visualization_msgs/Marker.h
+planner/CMakeFiles/agent_node.dir/src/agent.cpp.o: /opt/ros/kinetic/include/visualization_msgs/MarkerArray.h
 planner/CMakeFiles/agent_node.dir/src/agent.cpp.o: /opt/ros/kinetic/include/xmlrpcpp/XmlRpcDecl.h
 planner/CMakeFiles/agent_node.dir/src/agent.cpp.o: /opt/ros/kinetic/include/xmlrpcpp/XmlRpcValue.h
 

@@ -6,46 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/home/siddharth/multi_robo_plan/devel/include/planner/goal_update.h
-ros/service_traits.h
--
-planner/goal_updateRequest.h
--
-planner/goal_updateResponse.h
--
-
-/home/siddharth/multi_robo_plan/devel/include/planner/goal_updateRequest.h
-string
--
-vector
--
-map
--
-ros/types.h
--
-ros/serialization.h
--
-ros/builtin_message_traits.h
--
-ros/message_operations.h
--
-
-/home/siddharth/multi_robo_plan/devel/include/planner/goal_updateResponse.h
-string
--
-vector
--
-map
--
-ros/types.h
--
-ros/serialization.h
--
-ros/builtin_message_traits.h
--
-ros/message_operations.h
--
-
 /home/siddharth/multi_robo_plan/src/planner/src/driver_node.cpp
 planner.h
 /home/siddharth/multi_robo_plan/src/planner/src/planner.h
@@ -286,10 +246,6 @@ boost/make_shared.hpp
 cstddef
 -
 memory
--
-
-/opt/ros/kinetic/include/ros/message_operations.h
-ostream
 -
 
 /opt/ros/kinetic/include/ros/message_traits.h
