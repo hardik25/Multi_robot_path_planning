@@ -21,7 +21,7 @@ vector<double> goal;
 vector<double> plan_x;
 vector<double> plan_y;
 string agent_id;
-vector<double> start;
+vector<double> start{0,0,0};
 int avail;
 bool flag = false;
 int length=0;
@@ -32,6 +32,24 @@ int length=0;
 
 bool goal_assign(planner::goal_update::Request &req, planner::goal_update::Response &res)
 {
+
+	cout<<"input the agent id in as string";
+
+	cin>>agent_id;
+
+	cout<<"input the start position as: [x,y,yaw] in the same sequence";
+
+	
+
+	for (int i = 0; i<3; i++)
+	{
+		double x;
+		cin>>x;
+		start.push_back(x);
+
+	}
+
+
 	goal = req.goal;
 	avail = req.avail;
 	ROS_INFO("the goal has been assigned");
@@ -72,24 +90,6 @@ bool goal_assign(planner::goal_update::Request &req, planner::goal_update::Respo
 
 int main(int argc, char * argv[]) 
 {
-
-	cout<<"input the agent id in as string";
-
-	
-
-	getline(cin,agent_id);
-
-	cout<<"input the start position as: [x,y,yaw] in the same sequence";
-
-	
-
-	for (int i = 0; i<3; i++)
-	{
-		double x;
-		cin>>x;
-		start.push_back(x);
-
-	}
 
 
 
@@ -150,13 +150,15 @@ int main(int argc, char * argv[])
 		    viz_msg.markers[i].scale.y = 0.2;
 		    viz_msg.markers[i].scale.z = 0.2;
 		    viz_msg.markers[i].color.a = 1.0;
-		    viz_msg.markers[i].color.r = 0.0;
-		    viz_msg.markers[i].color.b = 0.1;
-		    viz_msg.markers[i].color.g = 0.1;
+		    viz_msg.markers[i].color.r = 0.8;
+		    viz_msg.markers[i].color.b = 0.2;
+		    viz_msg.markers[i].color.g = 0.2;
 			
-			flag = false;
+			
 
 			}
+
+			flag = false;
 
 		}
 

@@ -66,16 +66,6 @@ void MRobo::find_path(vector<double> start, vector<double> goal)
 	while(true)
 	{
 
-		if (update ==120)
-		{
-			break;
-		}
-
-
-		if(i_cur==i_goal && j_cur==j_goal)
-		{
-			break;
-		}
 
 		min_cost = 1000;
 
@@ -96,6 +86,15 @@ void MRobo::find_path(vector<double> start, vector<double> goal)
 			}
 		}
 
+
+
+		if(i_cur==i_goal && j_cur==j_goal)
+		{
+			break;
+		}
+
+		
+
 		// ROS_INFO("the parent of current node : %d%d", i_cur,j_cur);
 		// ROS_INFO("is the node : %d%d", grid[i_cur][j_cur].parent_x,grid[i_cur][j_cur].parent_y);
 
@@ -109,7 +108,7 @@ void MRobo::find_path(vector<double> start, vector<double> goal)
 		int j_n1 = j_cur;
 		if(i_n1<10&&j_n1<10&&grid[i_n1][j_n1].visit!=true)
 		{
-			int cost = min_cost + 10 + 10*(i_goal-i_n1) + (j_goal-j_n1);
+			int cost = min_cost + 10;
 			if (cost<cost_list[i_n1][j_n1])
 			{
 				cost_list[i_n1][j_n1] = cost;
@@ -125,7 +124,7 @@ void MRobo::find_path(vector<double> start, vector<double> goal)
 		j_n1 = j_cur+1;
 		if(i_n1<10&&j_n1>0&&grid[i_n1][j_n1].visit!=true)
 		{
-			int cost = min_cost + 10 + 10*(i_goal-i_n1) + 10*(j_goal-j_n1);
+			int cost = min_cost + 10;
 			if (cost<cost_list[i_n1][j_n1])
 			{
 				cost_list[i_n1][j_n1] = cost;
@@ -140,7 +139,7 @@ void MRobo::find_path(vector<double> start, vector<double> goal)
 		j_n1 = j_cur;
 		if(i_n1>=0&&j_n1<10&&grid[i_n1][j_n1].visit!=true)
 		{
-			int cost = min_cost + 10 + 10*(i_goal-i_n1) + 10*(j_goal-j_n1);
+			int cost = min_cost + 10;
 			if (cost<cost_list[i_n1][j_n1])
 			{
 				cost_list[i_n1][j_n1] = cost;
@@ -154,7 +153,7 @@ void MRobo::find_path(vector<double> start, vector<double> goal)
 		j_n1 = j_cur-1;
 		if(i_n1>=0&&j_n1>=0&&grid[i_n1][j_n1].visit!=true)
 		{
-			int cost = min_cost + 10 + 10*(i_goal-i_n1) + 10*(j_goal-j_n1);
+			int cost = min_cost + 10;
 			if (cost<cost_list[i_n1][j_n1])
 			{
 				cost_list[i_n1][j_n1] = cost;
