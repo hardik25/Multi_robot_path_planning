@@ -6,10 +6,8 @@ using namespace std;
 
 struct node
 {
-	
 	int parent_x;
 	int parent_y;
 	bool visit;
-	float cost;
 };
 

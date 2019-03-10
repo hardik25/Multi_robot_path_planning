@@ -7,4 +7,7 @@
 # new environment variables
 
 # modified environment variables
+export LD_LIBRARY_PATH="/opt/ros/kinetic/lib:/opt/ros/kinetic/lib/x86_64-linux-gnu"
+export PKG_CONFIG_PATH="/opt/ros/kinetic/lib/pkgconfig:/opt/ros/kinetic/lib/x86_64-linux-gnu/pkgconfig"
 export PWD="/home/siddharth/multi_robo_plan/build"
+export PYTHONPATH="/opt/ros/kinetic/lib/python2.7/dist-packages"
