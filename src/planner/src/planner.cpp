@@ -23,7 +23,7 @@ vector<double> x_path_send;
 vector<double> y_path_send;
 
 
-//function for finding the path from the given set of goal and start position. 
+///////////////////////function for finding the path from the given set of goal and start position. ///////////////////////
 
 void MRobo::find_path(vector<double> start, vector<double> goal)
 {
@@ -65,7 +65,7 @@ void MRobo::find_path(vector<double> start, vector<double> goal)
 
 
 	
-
+////////////////////////planning loop starts here /////////////////////////
 
 	while(true)
 	{
@@ -75,7 +75,7 @@ void MRobo::find_path(vector<double> start, vector<double> goal)
 
 
 
-		for(int i = 0;i<10;i++)
+		for(int i = 0;i<10;i++) /// this loop finds the minimum cost node from the current cost grid
 		{
 			for(int j = 0; j<10;j++)
 			{
@@ -107,6 +107,7 @@ void MRobo::find_path(vector<double> start, vector<double> goal)
 
 		grid[i_cur][j_cur].visit = true;
 
+////////////////////////////////////////// we check every neighbour of the four connected graph //////////////////////
 
 
 		int i_n1 = i_cur+1;
@@ -179,6 +180,8 @@ void MRobo::find_path(vector<double> start, vector<double> goal)
 
 	}
 
+
+
 	x_path.push_back(i_goal);
 	y_path.push_back(j_goal);
 
@@ -187,7 +190,7 @@ void MRobo::find_path(vector<double> start, vector<double> goal)
 
 	ROS_INFO("found the path");
 
-
+/////////////////////This loop finds the path by backtracking the lowest cost parents //////////////////////
 
 	while(true)
 	{
@@ -226,13 +229,13 @@ void MRobo::find_path(vector<double> start, vector<double> goal)
 
 }
 
-
+////////////////////Just a message function for showing that the grid can now be displayed ////////////////////
 void MRobo::display_grid()
 {
 	ROS_INFO("displaying the grid");
 	
 }
-
+//////////////////////////////// public function for starting the plan 
 
 void MRobo::start_plan(vector<double> start,vector<double> goal)
 {
@@ -250,7 +253,7 @@ void MRobo::start_plan(vector<double> start,vector<double> goal)
 
 }
 
-
+////////////////////////////////////call back function for the topic of assigning the current position of the agent ////////////////////////
 
 void assign_start(const planner::agent_status msg)
 {
@@ -260,6 +263,7 @@ void assign_start(const planner::agent_status msg)
 }
 
 
+//////////////////////////////// call back function for the getting plan service call ///////////////////////////////////
 
 
 bool plan_assign(planner::plan::Request &req, planner::plan::Response &res)
@@ -295,6 +299,8 @@ bool plan_assign(planner::plan::Request &req, planner::plan::Response &res)
 
 }
 
+
+//////////// main driving function .//////////////////////////////
 
 
 int main(int argc, char * argv[]) 

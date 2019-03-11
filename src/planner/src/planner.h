@@ -8,6 +8,8 @@
 
 using namespace std;
 
+//class defition for the planner node. 
+
 class MRobo 
 {
 	private:

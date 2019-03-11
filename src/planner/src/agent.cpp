@@ -28,7 +28,7 @@ int length=0;
 
 
 
-
+////////////call back function for the goal assignment service /////////////////
 
 bool goal_assign(planner::goal_update::Request &req, planner::goal_update::Response &res)
 {
@@ -91,6 +91,8 @@ bool goal_assign(planner::goal_update::Request &req, planner::goal_update::Respo
 
 	return true;
 }
+
+//////// main function for driving ////////////////
 
 int main(int argc, char * argv[]) 
 {
